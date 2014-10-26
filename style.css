@@ -1,0 +1,23 @@
+
+body { 
+	padding-top: 70px; 
+}
+
+figure {
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px;
+}
+figcaption {
+	text-align: center;
+	padding-top: 10px;
+}
+
+canvas {
+	border: 1px dotted black;
+}
+
+footer {
+	height: 50px;
+}
