@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 6.2: Content editable</title>
+	<title>HTML5 - Example 7: Web Worker</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,18 +31,37 @@
     </div>
     
 	<div class="container">
-		<h3><code>contenteditable</code></h3>
-		<div class="row">
-			<div class="col-md-6">
-				<style class="edittable well" contenteditable>h4 { }
-p { }
-em { }</style>
-			</div>
-			<div class="col-md-6">
-				<h4>Header</h4>
-				<p>This is a text <em>inside</em> a paragragh.</p>
-			</div>
-		</div>
+		<h3>Old school scripts</h3>
+		<form>
+			<input type="number" id="input" />
+			<button type="button" class="btn btn-primary" id="btn1">Start</button>
+		</form>
+		<output id="output1"></output>
 	</div>
+	
+	<script>
+	
+	function getFibonacci(n) {
+		var a = 0;
+		var b = 1;
+		var c = 0;
+		
+		if (n == 0) return 0;
+		for (var i=0; i<n; i++) {
+			c = a + b;
+			a = b;
+			b = c;
+		} 
+		return c;
+	}
+	
+	var btn1 = document.getElementById('btn1');
+	btn1.addEventListener('click', function(e) {
+		var input = document.getElementById('input');
+		var output1 = document.getElementById('output1');
+		output1.innerHTML = getFibonacci(input.value);
+	});
+	
+	</script>
 </body>
 </html>

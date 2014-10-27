@@ -30,7 +30,7 @@ footer {
 	height: 60px; 
 }
 
-.edittable__script {
+.edittable {
 	display: block;
 	white-space: pre;
 	font-family: monospace;
