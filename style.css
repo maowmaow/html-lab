@@ -14,10 +14,34 @@ figcaption {
 	padding-top: 10px;
 }
 
+mark {
+	background-color: #FF0;
+}
+
 canvas {
 	border: 1px dotted black;
 }
 
 footer {
-	height: 50px;
+	height: 200px;
+}
+
+.pad { 
+	height: 60px; 
+}
+
+.edittable__script {
+	display: block;
+	white-space: pre;
+	font-family: monospace;
+}
+
+.drop-container {
+	border: 2px solid #999;
+	border-radius: 4px;
+	width: 310px;
+	height: 310px;
+	float: left;
+	margin: 10px;
+	text-align: center;
 }

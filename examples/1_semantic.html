@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5</title>
+	<title>HTML5 - Example 1: Semantic</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -18,15 +18,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">HTML5 Example 1 - Semantic</a>
+          <a class="navbar-brand" href="#">HTML5 Course</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active">
-            	<a href="index.html">Home</a>
-            </li>
             <li>
-            	<a href="examples/1_semantic.html">Examples</a>
+            	<a href="../index.html">Home</a>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -35,18 +32,7 @@
     
 	<div class="container">
 	
-		<h3><code>Details</code></h3>
-		<pre><code>&lt;details&gt;<br />
-	&lt;summary&gt;Summary text&lt;/summary&gt;<br />
-	&lt;p&gt;Details text&lt;/p&gt;<br />
-&lt;/details&gt;</code></pre>
-		
-		<details>
-			<summary>This is a short summary</summary>
-			<p>Lorem ipsum dolor sit amet, veri atqui efficiantur pro in, qui feugiat platonem efficiantur ne. Per id solet mentitum, aliquando incorrupte ad cum, idque assum praesent et sea. An quo timeam omittam contentiones, pri an stet perpetua vituperata, eu nam sumo stet vitae. Vis repudiandae consectetuer id, his ea falli nihil. Vim et quod decore instructior, doctus instructior eam cu, mea ne ferri democritum. Mea cetero discere ea, consul albucius ius ea, vix debet regione assueverit at. In pro tation possim, sit viris prompta quaerendum cu, pro quot possit ex. Doming persecuti et nam, nec te consulatu philosophia voluptatibus, detraxit sensibus id duo. Assum perpetua vis ex, pri ad graecis epicurei voluptatibus. Cu pri iisque impetus, quot semper docendi an vis. Ei nisl audire vim, in errem putant inciderint nam. Ius porro ridens veritus cu, cu facete dictas appareat his.</p>
-		</details>
-		
-		<h3><code>Figure</code></h3>
+		<h3><code>Figure</code> / <code>Figcaption</code></h3>
 		<pre><code>&lt;figure&gt;<br />
 	&lt;img src="graph.png" /&gt;<br />
 	&lt;figcaption&gt;Caption text&lt;/figcaption&gt;<br />
@@ -56,6 +42,41 @@
 			<img src="../images/pie_graph.jpg" width="200px;" />
 			<figcaption>Browser market share</figcaption>
 		</figure>
+
+		<h3><code>Details</code> / <code>Summary</code></h3>
+		<pre><code>&lt;details&gt;<br />
+	&lt;summary&gt;Summary text&lt;/summary&gt;<br />
+	&lt;p&gt;Details text&lt;/p&gt;<br />
+&lt;/details&gt;</code></pre>
+		
+		<details>
+			<summary>This is a short summary</summary>
+			<p>Lorem ipsum dolor sit amet, veri atqui efficiantur pro in, qui feugiat platonem efficiantur ne. Per id solet mentitum, aliquando incorrupte ad cum, idque assum praesent et sea. An quo timeam omittam contentiones, pri an stet perpetua vituperata, eu nam sumo stet vitae. Vis repudiandae consectetuer id, his ea falli nihil. Vim et quod decore instructior, doctus instructior eam cu, mea ne ferri democritum. Mea cetero discere ea, consul albucius ius ea, vix debet regione assueverit at. In pro tation possim, sit viris prompta quaerendum cu, pro quot possit ex. Doming persecuti et nam, nec te consulatu philosophia voluptatibus, detraxit sensibus id duo. Assum perpetua vis ex, pri ad graecis epicurei voluptatibus. Cu pri iisque impetus, quot semper docendi an vis. Ei nisl audire vim, in errem putant inciderint nam. Ius porro ridens veritus cu, cu facete dictas appareat his.</p>
+		</details>
+
+		<h3><code>mark</code></h3>
+		<pre><code>&lt;mark&gt;highlight text&lt;/mark&gt;</code></pre>
+		<p>Lorem ipsum dolor sit amet, <mark>veri atqui efficiantur</mark> pro in, qui feugiat platonem efficiantur ne.</p>
+	
+		<h3><code>dialog</code></h3>
+		<pre><code>&lt;dialog open&gt;Dialog message&lt;/dialog&gt;</code></pre>
+		<dialog open>You've got new messages in your inbox.</dialog>
+		
+		<div class="pad"></div>
+		
+		<h3><code>progress</code></h3>
+		<pre><code>&lt;progress value="40" max="100"&gt;&lt;/progress&gt;</code></pre>
+		<progress value="40" max="100"></progress>
+		
+		<h3><code>meter</code></h3>
+		<pre><code>&lt;meter value="97" min="32" max="212"&gt;97 &deg;F&lt;/meter&gt;</code></pre>
+		<meter value="97" min="32" max="212">97 &deg;F</meter>
+	
+		<h3><code>ruby</code> / <code>rt</code></h3>
+		<pre><code lang="ko">&lt;ruby&gt;韓國 &lt;rt&gt;han guk&lt;/rt&gt;&lt;/ruby&gt;</code></pre>
+		<ruby lang="ko">
+			韓國 <rt>han guk</rt>
+		</ruby>
 	</div>
 
 	<footer></footer>

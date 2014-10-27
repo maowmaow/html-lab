@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 - Example 4: Geolocation</title>
+	<link rel="shortcut icon" href="../favicon.png" />
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">HTML5 Course</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+            	<a href="../index.html">Home</a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<figure>
+					<img id="map" />
+					<figcaption id="caption"></figcaption>
+				</figure>
+			</div>
+			<div class="col-md-6">
+<script class="edittable__script well">navigator.geolocation.getCurrentPosition(function(position) {
+   var latitude = position.coords.latitude;
+   var longitude = position.coords.longitude;
+   var coords = latitude + "," + longitude;
+	
+   var img = document.getElementById('map');
+   img.src = "https://maps.googleapis.com/maps/api/staticmap?"
+           + "center=" + coords 
+           + "&zoom=11&size=400x400"
+           + "&markers=color:red%7Clabel:X%7C" + coords;
+	
+   var caption = document.getElementById('caption');
+   caption.innerHTML = coords;
+});
+</script>
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
