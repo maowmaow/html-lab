@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html manifest="../lab.appcache">
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 9: Server Sent Event</title>
+	<title>HTML5 - Example 10: Application Cache</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,50 +31,9 @@
     </div>
     
 	<div class="container">
-		<h3>Server Sent Event</h3>
-		<form>
-			<button type="button" id="startBtn">Start</button>
-			<button type="button" id="stopBtn">Stop</button>
-		</form>
-		<output>
-			<ol id="output">
-			</ol>
-		</output>
+		<h3>Application Cache</h3>
+		<p>Click <a href="10_cache.html">here</a> to open a cache page.</p>
 	</div>
 	
-	<script>
-	
-	var output = document.getElementById('output');
-	var startBtn = document.getElementById('startBtn');
-	var stopBtn = document.getElementById('stopBtn');
-	var source;
-	
-	startBtn.addEventListener('click', function(e) {
-		if (source) return;
-		
-		source = new EventSource("9_ss.php");
-		source.onmessage = function(e) {
-			var li = document.createElement('li');
-			li.innerHTML = 'message: ' + e.data;
-			output.appendChild(li);
-		};	
-		source.addEventListener('ping', function(e) {
-			var obj = JSON.parse(e.data);
-			var li = document.createElement('li');
-			li.innerHTML = 'ping: ' + obj.time;
-			output.appendChild(li);
-		});
-	});
-	
-	stopBtn.addEventListener('click', function(e) {
-		if (!source) return;
-		
-		source.close();
-		source = null;
-	});
-	
-	
-	
-	</script>
 </body>
 </html>

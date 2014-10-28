@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 9: Server Sent Event</title>
+	<title>HTML5 - Example 11: File API</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,50 +31,29 @@
     </div>
     
 	<div class="container">
-		<h3>Server Sent Event</h3>
-		<form>
-			<button type="button" id="startBtn">Start</button>
-			<button type="button" id="stopBtn">Stop</button>
+		<h3>File API</h3>
+		<form role="form">
+			<p>
+				<input type="file" onchange="fileSelected(this)"/>
+			</p>
 		</form>
-		<output>
-			<ol id="output">
-			</ol>
-		</output>
+		<figure>
+			<img id="preview" />
+			<figcaption>Image Preview: <span id="name"></span></figcaption>
+		</figure>
 	</div>
 	
 	<script>
-	
-	var output = document.getElementById('output');
-	var startBtn = document.getElementById('startBtn');
-	var stopBtn = document.getElementById('stopBtn');
-	var source;
-	
-	startBtn.addEventListener('click', function(e) {
-		if (source) return;
+	function fileSelected(input) {
+		var f = input.files[0];
+		document.getElementById('name').innerHTML = f.name;
 		
-		source = new EventSource("9_ss.php");
-		source.onmessage = function(e) {
-			var li = document.createElement('li');
-			li.innerHTML = 'message: ' + e.data;
-			output.appendChild(li);
-		};	
-		source.addEventListener('ping', function(e) {
-			var obj = JSON.parse(e.data);
-			var li = document.createElement('li');
-			li.innerHTML = 'ping: ' + obj.time;
-			output.appendChild(li);
-		});
-	});
-	
-	stopBtn.addEventListener('click', function(e) {
-		if (!source) return;
-		
-		source.close();
-		source = null;
-	});
-	
-	
-	
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('preview').src = e.target.result;
+		}
+		reader.readAsDataURL(f);
+	}
 	</script>
 </body>
 </html>

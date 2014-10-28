@@ -1,0 +1,25 @@
+
+<script>
+var canvas = document.getElementById('x');
+var ctx = canvas.getContext('2d');
+ctx.fillStyle = "#FF0000";
+//ctx.fillRect(10,10,200,100);
+ctx.strokeRect(10,10,200,100);
+
+ctx.moveTo(10,10);
+ctx.lineTo(210,110);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(110,60,30,0,2*Math.PI);
+ctx.fill();
+
+ctx.font = "30px Arial";
+ctx.strokeText("Hello World",10,160);
+
+var img = new Image();
+img.src = 'http://www.google.com/logos/2011/guitar11-hp-sprite.png';
+img.onload = function() {
+	ctx.drawImage(img, 250, 10);	
+};
+</script>
