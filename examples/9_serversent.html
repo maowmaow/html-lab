@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 7: Web Worker</title>
+	<title>HTML5 - Example 9: Server Sent Event</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,48 +31,38 @@
     </div>
     
 	<div class="container">
-		<h3>Web Worker</h3>
-		<form role="form">
-			<input type="number" id="input1" />
-			<output id="output1"></output>
-			<br/>
-			
-			<input type="number" id="input2" />
-			<output id="output2"></output>
-			<br/>
-			
-			<button type="button" class="btn btn-primary" id="btn1">Submit</button>
+		<h3>Server Sent Event</h3>
+		<form>
+			<button type="button" id="startBtn">Start</button>
+			<button type="button" id="stopBtn">Stop</button>
 		</form>
-		<output id="output1"></output>
+		<output id="output"></output>
 	</div>
 	
 	<script>
 	
-	function getFibonacci(n) {
-		var a = 0;
-		var b = 1;
-		var c = 0;
+	var startBtn = document.getElementById('startBtn');
+	var stopBtn = document.getElementById('stopBtn');
+	var source;
+	
+	startBtn.addEventListener('click', function(e) {
+		if (source) return;
 		
-		if (n == 0) return 0;
-		for (var i=0; i<n; i++) {
-			c = a + b;
-			a = b;
-			b = c;
-		} 
-		return c;
-	}
-	
-	var input1 = document.getElementById('input1');
-	input1.addEventListener('change', function(e) {
-		var output1 = document.getElementById('output1');
-		output1.innerHTML = getFibonacci(this.value);
+		source = new EventSource("9_ss.php");
+		source.onmessage = function(event) {
+			document.getElementById("output").innerHTML += event.data + "<br>";
+		};	
 	});
 	
-	var input2 = document.getElementById('input2');
-	input2.addEventListener('change', function(e) {
-		var output2 = document.getElementById('output2');
-		output2.innerHTML = getFibonacci(this.value);
+	stopBtn.addEventListener('click', function(e) {
+		if (!source) return;
+		
+		source.close();
+		source = null;
 	});
+	
+	
+	
 	</script>
 </body>
 </html>

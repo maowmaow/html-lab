@@ -1,0 +1,36 @@
+	var w1;
+	var w2;
+
+
+
+		//var output1 = document.getElementById('output1');
+		//output1.innerHTML = getFibonacci(this.value);
+		if (w1) {
+			w1.terminate();
+		}
+		
+		w1 = new Worker('7_fibonacci.js');
+		w1.addEventListener('message', function(e) {
+			var output1 = document.getElementById('output1');
+			output1.innerHTML = e.data;
+			w1.terminate();
+			w1 = null;
+		});
+		w1.postMessage(this.value);
+		
+		
+		
+		
+		if (w2) {
+			w2.terminate();
+		}
+		
+		w2 = new Worker('7_fibonacci.js');
+		w2.addEventListener('message', function(e) {
+			var output2 = document.getElementById('output2');
+			output2.innerHTML = e.data;
+			w2.terminate();
+			w2 = null;
+		});
+		w2.postMessage(this.value);
+		
