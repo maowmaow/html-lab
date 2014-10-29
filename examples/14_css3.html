@@ -31,17 +31,166 @@
     </div>
     
 	<div class="container">
-	
-		<h3><code>type="color"</code></h3>
-		<pre><code>&lt;input type="color" /&gt;</code></pre>
-		<input type="color" />
-
+		<h3><code>box-sizing</code></h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-3 col-md-offset-1 well">.ex1_1 {
+    background: green;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+    padding: 10px;
+    border: 2px solid black;
+    box-sizing: content-box;
+}</style>
+			<style contenteditable class="edittable col-md-3 well">.ex1_2 {
+    background: green;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+    padding: 10px;
+    border: 2px solid black;
+    box-sizing: border-box;
+}</style>
+			<div class="col-md-4">
+				<div class="ex1_1"> 1-1
+				</div>
+				<div class="ex1_2"> 1-2
+				</div>
+			</div>
+		</div>
 		
+		<h3><code>background</code>, <code>background-size</h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.ex2 {
+    background: url('../favicon.png');
+    background-size: 100% 100%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #999;
+    
+}</style>
+			<div class="col-md-6">
+				<div class="ex2">
+				</div>
+			</div>
+		</div>
+		
+		<h3><code>border</code>, <code>box-shadow</code></h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.ex3 {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #999;
+    border-radius: 0;
+    box-shadow: 0 0 0 black;
+    
+}</style>
+			<div class="col-md-6">
+				<div class="ex3">
+				</div>
+			</div>
+		</div>
+		
+		<h3><code>text-shadow</code>, <code>word-wrap</code></h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.ex4 {
+    border: 1px solid #ccc;
+    font-size: 3em;
+    text-shadow: 0px 0px 0px #666;
+    word-wrap: normal;
+    
+}</style>
+			<div class="col-md-6">
+				<div class="ex4" contenteditable>Lorem ipsum dolor sit amet.</div>
+			</div>
+		</div>
+
+		<h3>2D transform</h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.ex5 {
+    background: #eee;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #999;
+    transform: rotate(0deg) 
+               translate(0px, 0px)
+               scale(1,1) 
+               skew(0,0);
+    
+}</style>
+			<div class="col-md-6">
+				<div class="ex5" contenteditable>Lorem ipsum</div>
+			</div>
+		</div>
+		
+		<h3>3D transform</h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.ex6 {
+    background: #eee;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #999;
+    transform: rotate3d(0,1,0, 0deg) 
+               translate3d(0px, 0px, 0px)
+               scale3d(1,1,2) 
+               skew(0,0);
+}</style>
+			<div class="col-md-6">
+				<div class="ex6" contenteditable>Lorem ipsum</div>
+			</div>
+		</div>
+		
+		<h3>Transition</h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.ex7 {
+    background: #eee;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #999;
+    
+    transition: all 2s;
+}
+.ex7:hover {
+    background: blue;
+    
+}</style>
+			<div class="col-md-6">
+				<div class="ex7">Lorem ipsum</div>
+			</div>
+		</div>
+		
+		<h3>Animation</h3>
+		<div class="row">
+			<style contenteditable class="edittable col-md-5 col-md-offset-1 well">.spin {
+    /* Chrome, Safari, Opera */
+    -webkit-animation: spin 2s infinite; 
+    animation: spin 2s infinite;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #999;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes spin {
+    from { transform: rotate3d(1,0,0, 10deg)
+                      rotate3d(0,1,0, 0deg); }
+    to { transform: rotate3d(1,0,0, 10deg) 
+                    rotate3d(0,1,0, 360deg); }
+}
+
+/* Standard syntax */
+@keyframes spin {
+    from { transform: rotate3d(0,1,0, 0deg); }
+    to { transform: rotate3d(0,1,0, 360deg); }
+}</style>
+			<div class="col-md-6">
+				<div class="spin" contenteditable>Lorem ipsum</div>
+			</div>
+		</div>
 	</div>
-
 	<footer></footer>
-	<script>
-		
-	</script>
+
 </body>
 </html>
