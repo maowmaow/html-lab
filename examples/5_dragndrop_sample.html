@@ -36,14 +36,14 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">Country</h3></div>
 					<div class="panel-body" id="drag-source">
-						<img id="flag1" src="../images/Canada-Flag.png" />
-						<img id="flag2" src="../images/Germany-Flag.png" />
-						<img id="flag3" src="../images/Japan-Flag.png" />
-						<img id="flag4" src="../images/Liberia-Flag.png" />
-						<img id="flag5" src="../images/Mexico-Flag.png" />
-						<img id="flag6" src="../images/Saint-Barthelemy-Flag.png" />
-						<img id="flag7" src="../images/United-Kingdom-Flag.png" />
-						<img id="flag8" src="../images/United-States-Flag.png" />
+						<img draggable src="../images/Canada-Flag.png" />
+						<img draggable src="../images/Germany-Flag.png" />
+						<img draggable src="../images/Japan-Flag.png" />
+						<img draggable src="../images/Liberia-Flag.png" />
+						<img draggable src="../images/Mexico-Flag.png" />
+						<img draggable src="../images/Saint-Barthelemy-Flag.png" />
+						<img draggable src="../images/United-Kingdom-Flag.png" />
+						<img draggable src="../images/United-States-Flag.png" />
 					</div>
 				</div>
 			</div>
@@ -56,7 +56,7 @@
 				</div>
 				<div class="panel panel-success">
 					<div class="panel-heading"><h3 class="panel-title">Selection</h3></div>
-					<div class="panel-body" id="drop-results">
+					<div class="panel-body" id="drop-items">
 					
 					</div>
 				</div>
@@ -67,28 +67,31 @@
 <script>
 	var src = document.getElementById('drag-source');
 	var target = document.getElementById('drop-target');
-	var buckets = document.getElementById('drop-results');
-	
-	function addImage(url) {
-		var img = new Image();
-		img.src = url;
-		buckets.appendChild(img);
-	}
+	var buckets = document.getElementById('drop-items');
 	
 	src.addEventListener('dragstart', function(e) {
-		console.log(e.target.src);
-		
-		
+		e.dataTransfer.setData('text/uri-list', e.target.src);
 	});
 	
 	target.addEventListener('dragover', function(e) {
-		
-		
+		e.preventDefault();
 	});
-		
+	
+	target.addEventListener('dragenter', function(e) {
+		e.dataTransfer.dropEffect = "copy";
+		this.parentNode.className = 'panel panel-danger';
+	});
+	target.addEventListener('dragleave', function(e) {
+		this.parentNode.className = 'panel panel-primary';
+	});
+	
 	target.addEventListener('drop', function(e) {
+		e.preventDefault();
+		this.parentNode.className = 'panel panel-primary';
 		
-		
+		var img = new Image();
+		img.src = e.dataTransfer.getData('text/uri-list');
+		buckets.appendChild(img);
 	});
 </script>
 </body>

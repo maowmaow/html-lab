@@ -1,7 +1,7 @@
+// html file
+
 	var w1;
 	var w2;
-
-
 
 		//var output1 = document.getElementById('output1');
 		//output1.innerHTML = getFibonacci(this.value);
@@ -34,3 +34,14 @@
 		});
 		w2.postMessage(this.value);
 		
+
+
+
+// js file
+
+self.addEventListener('message', function(e) {
+	console.log('finding fibonacci for ' + e.data);
+	var result = getFibonacci(e.data);
+	self.postMessage(result);
+	self.close();
+});

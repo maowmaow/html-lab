@@ -52,17 +52,19 @@
 	btn.addEventListener('click', function(e) {
 		e.preventDefault();
 		
-		//window.frames[0].hello(input.value);
-		window.frames[0].postMessage(input.value, 'http://localhost');
+		window.frames[0].hello(input.value);
+		//window.frames[0].postMessage(input.value, 'http://localhost');
 	});
 	
 	function hello(message) {
 		output.innerHTML = message;
 	}
 	
+	/*
 	window.addEventListener('message', function(e) {
 		hello(e.data);
 	});
+	*/
 	</script>
 </body>
 </html>

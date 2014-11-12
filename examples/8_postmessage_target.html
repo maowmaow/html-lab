@@ -26,15 +26,17 @@
 		output.innerHTML = message;
 	};
 	
+	/* 
 	window.addEventListener('message', function(e) {
 		hello(e.data);
 	});
+	*/
 	
 	btn.addEventListener('click', function(e) {
 		e.preventDefault();
 		
-		//window.parent.hello(input.value);
-		window.parent.postMessage(input.value, 'http://127.0.0.1');
+		window.parent.hello(input.value);
+		//window.parent.postMessage(input.value, 'http://127.0.0.1');
 	});
 	
 	</script>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 7: Web Worker</title>
+	<title>HTML5 - Example 9: Server Sent Event</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,56 +31,48 @@
     </div>
     
 	<div class="container">
-		<h3>Web Worker</h3>
-		<div class="row">
-			<div class="col-md-4">
-				<form role="form">
-					<input type="number" id="input1" min="0" max="20" /> Billions loop
-					<output id="output1"></output>
-					<br/>
-					
-					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
-				</form>
-				<output id="output1"></output>
-			</div>
-			<div class="col-md-4">
-				<figure class="thumbnail">
-					<img src="../images/loader.gif" />
-				</figure>
-			</div>
-		</div>
+		<h3>Server Sent Event</h3>
+		<form>
+			<button type="button" id="startBtn">Start</button>
+			<button type="button" id="stopBtn">Stop</button>
+		</form>
+		<output>
+			<ol id="output">
+			</ol>
+		</output>
 	</div>
 	
 	<script>
 	
-	var input1 = document.getElementById('input1');
-	var output1 = document.getElementById('output1');
+	var output = document.getElementById('output');
+	var startBtn = document.getElementById('startBtn');
+	var stopBtn = document.getElementById('stopBtn');
+	var source;
 	
-	function getFibonacci(n) {
-		var a = 0;
-		var b = 1;
-		var c = 0;
+	startBtn.addEventListener('click', function(e) {
+		if (source) return;
 		
-		if (n == 0) return 0;
-		for (var i=0; i<n; i++) {
-			c = a + b;
-			a = b;
-			b = c;
-		} 
-		return c;
-	}
-	
-	
-	
-	input1.addEventListener('change', function(e) {
-		var totalLoop = this.valueAsNumber * 1000000000;
-		
-		output1.innerHTML = ''; // reset output text;
-		
-		output1.innerHTML = getFibonacci(totalLoop);
-		
-		// add your code here...   7_fibonacci.js
+		source = new EventSource("9_ss.php");
+		source.onmessage = function(e) {
+			var li = document.createElement('li');
+			li.innerHTML = 'message: ' + e.data;
+			output.appendChild(li);
+		};	
+		source.addEventListener('news_alert', function(e) {
+			var obj = JSON.parse(e.data);
+			var li = document.createElement('li');
+			li.innerHTML = 'news_alert: ' + obj.time + ", " + obj.headline;
+			output.appendChild(li);
+		});
 	});
+	
+	stopBtn.addEventListener('click', function(e) {
+		if (!source) return;
+		
+		source.close();
+		source = null;
+	});
+	
 	
 	
 	</script>

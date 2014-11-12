@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 7: Web Worker</title>
+	<title>HTML5 - Example 2.3: Form Validation</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,58 +31,27 @@
     </div>
     
 	<div class="container">
-		<h3>Web Worker</h3>
-		<div class="row">
-			<div class="col-md-4">
-				<form role="form">
-					<input type="number" id="input1" min="0" max="20" /> Billions loop
-					<output id="output1"></output>
-					<br/>
-					
-					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
-				</form>
-				<output id="output1"></output>
-			</div>
-			<div class="col-md-4">
-				<figure class="thumbnail">
-					<img src="../images/loader.gif" />
-				</figure>
-			</div>
-		</div>
+	
+		<h3><code>required</code></h3>
+		<pre><code>&lt;input type="text" required /&gt;</code></pre>
+		<form><input type="text" name="input1" required /> <button type="submit">Submit</button></form>
+		
+		<h3><code>pattern</code></h3>
+		<pre><code>&lt;input type="text" pattern="<em>regex</em>" /&gt;</code></pre>
+		<form><input type="text" name="input2" id="input2" pattern="\d{3}-\d{4}" placeholder="xxx-xxxx" required /> <button type="submit">Submit</button></form>
+		
+		<h3><code>min</code>, <code>max</code></h3>
+		<pre><code>&lt;input type="date" min="2014-10-24" max="2014-12-13" /&gt;</code></pre>
+		<form><input type="date" min="2014-10-24" max="2014-12-13" style="line-height: inherit" /> <button type="submit">Submit</button></form>
+		
+		<h3><code>maxlength</code></h3>
+		<pre><code>&lt;input type="text" maxlength="5" /&gt;</code></pre>
+		<form><input type="text" name="data" maxlength="5" required /> <button type="submit">Submit</button></form>
+		
 	</div>
-	
+
+	<footer></footer>
 	<script>
-	
-	var input1 = document.getElementById('input1');
-	var output1 = document.getElementById('output1');
-	
-	function getFibonacci(n) {
-		var a = 0;
-		var b = 1;
-		var c = 0;
-		
-		if (n == 0) return 0;
-		for (var i=0; i<n; i++) {
-			c = a + b;
-			a = b;
-			b = c;
-		} 
-		return c;
-	}
-	
-	
-	
-	input1.addEventListener('change', function(e) {
-		var totalLoop = this.valueAsNumber * 1000000000;
-		
-		output1.innerHTML = ''; // reset output text;
-		
-		output1.innerHTML = getFibonacci(totalLoop);
-		
-		// add your code here...   7_fibonacci.js
-	});
-	
-	
 	</script>
 </body>
 </html>

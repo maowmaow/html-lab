@@ -35,19 +35,29 @@
 		<pre><code>&lt;div contenteditable&gt;
     A sample text
 &lt;/div&gt;</code></pre>
-		<div class="panel panel-default" id="panel" contenteditable>
-			<div class="panel-heading"><h3 class="panel-title" style="color: red">Edit me!</h3></div>
-			<div class="panel-body">
-				A sample text
-				
-				<ol>
-					<li>List item</li>
-					<li>Another item</li>
-					<li>Yet another item</li>
-				</ol>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default" id="panel" contenteditable>
+					<div class="panel-heading"><h3 class="panel-title" style="color: red">Edit me!</h3></div>
+					<div class="panel-body">
+						A sample text
+						
+						<ol>
+							<li>List item</li>
+							<li>Another item</li>
+							<li>Yet another item</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<textarea class="form-control" rows="6">Edit me too! 
+
+I'm good old textarea.
+				</textarea>
 			</div>
 		</div>
-		
 		<button type="button" class="btn btn-default" id="toggleBtn">Toggle Edit Mode</button>
 	</div>
 	<script>

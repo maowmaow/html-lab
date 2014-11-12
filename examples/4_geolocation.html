@@ -31,31 +31,28 @@
     </div>
     
 	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<figure>
-					<img id="map" />
-					<figcaption id="caption"></figcaption>
-				</figure>
-			</div>
-			<div class="col-md-6">
-<script class="edittable well">navigator.geolocation.getCurrentPosition(function(position) {
-   var latitude = position.coords.latitude;
-   var longitude = position.coords.longitude;
-   var coords = latitude + "," + longitude;
-	
-   var img = document.getElementById('map');
-   img.src = "https://maps.googleapis.com/maps/api/staticmap?"
-           + "center=" + coords 
-           + "&zoom=11&size=400x400"
-           + "&markers=color:red%7Clabel:X%7C" + coords;
-	
-   var caption = document.getElementById('caption');
-   caption.innerHTML = coords;
-});
-</script>
-			</div>
-		</div>		
+		<figure>
+			<img id="map" />
+			<figcaption id="caption"></figcaption>
+		</figure>
 	</div>
+	
+	<script>
+
+var image = document.getElementById('map');
+var caption = document.getElementById('caption');
+
+function showGoogleMap(latitude, longitude) {
+   image.src = "https://maps.googleapis.com/maps/api/staticmap?"
+           + "center=" + latitude + ',' + longitude
+           + "&zoom=11&size=400x400"
+           + "&markers=color:red%7Clabel:X%7C" + latitude + ',' + longitude
+   caption.innerHTML = latitude + ',' + longitude;
+}
+
+// Add your code here..
+showGoogleMap(1,1);
+
+	</script>
 </body>
 </html>

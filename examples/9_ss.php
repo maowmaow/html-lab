@@ -2,22 +2,28 @@
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
-$counter = rand(1, 10);
+$stock = array('BBL', 'KBANK', 'BAY', 'SCB');
+
+$counterA = rand(1, 10);
+$counterB = rand(1, 10);
 while (1) {
-  // Every second, sent a "ping" event.
   
-  echo "event: ping\n";
   $curDate = date(DATE_ISO8601);
-  echo 'data: {"time": "' . $curDate . '"}';
-  echo "\n\n";
+  
+  // Sent 'news_alert' event at random intervals.
+  $counterA--;
+  if (!$counterA) {
+	  echo "event: news_alert\n";
+	  echo 'data: {"time": "' . $curDate . '", "headline":"News update for ' . $stock[rand(0, 3)] . '"}';
+	  echo "\n\n";
+	  $counterA = rand(1, 10);
+  }
   
   // Send a simple message at random intervals.
-  
-  $counter--;
-  
-  if (!$counter) {
-    echo 'data: This is a message at time ' . $curDate . "\n\n";
-    $counter = rand(1, 10);
+  $counterB--;
+  if (!$counterB) {
+    echo 'data: This is a custom message at time ' . $curDate . "\n\n";
+    $counterB = rand(1, 10);
   }
   
   ob_flush();

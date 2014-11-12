@@ -47,30 +47,35 @@
 	var output = document.getElementById('output');
 	var startBtn = document.getElementById('startBtn');
 	var stopBtn = document.getElementById('stopBtn');
+	
 	var source;
 	
-	startBtn.addEventListener('click', function(e) {
-		if (source) return;
-		
-		source = new EventSource("9_ss.php");
-		source.onmessage = function(e) {
-			var li = document.createElement('li');
-			li.innerHTML = 'message: ' + e.data;
-			output.appendChild(li);
-		};	
-		source.addEventListener('ping', function(e) {
-			var obj = JSON.parse(e.data);
-			var li = document.createElement('li');
-			li.innerHTML = 'ping: ' + obj.time;
-			output.appendChild(li);
+	function showNotification(headline) {
+		Notification.requestPermission(function() {
+			 new Notification('News Update', {"body": headline} );
 		});
+	}
+	
+	function showMessage(text) {
+		var li = document.createElement('li');
+		li.innerHTML = 'message: ' + text;
+		output.appendChild(li);
+	}
+	
+	startBtn.addEventListener('click', function(e) {
+		
+		showNotification('hello world');
+		showMessage('test');
+		
+		// add your code here...   9_ss.php
+		
+		
 	});
 	
 	stopBtn.addEventListener('click', function(e) {
-		if (!source) return;
 		
-		source.close();
-		source = null;
+		
+		
 	});
 	
 	
