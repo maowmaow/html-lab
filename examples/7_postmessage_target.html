@@ -10,34 +10,19 @@
 <body style="padding:0;">
 	<div class="container">
 		<h3>This is child page in iframe</h3>
-		<form role="form">
-			<input type="text" id="input" /><button type="submit" class="btn btn-primary" id="btn">Submit</button>
-		</form>
+		
 		<output id="output"></output>
 	</div>
 	
 	<script>
 	
-	var input = document.getElementById('input');
-	var btn = document.getElementById('btn');
 	var output = document.getElementById('output');
 	
 	function hello(message) {
 		output.innerHTML = message;
 	};
 	
-	/* 
-	window.addEventListener('message', function(e) {
-		hello(e.data);
-	});
-	*/
-	
-	btn.addEventListener('click', function(e) {
-		e.preventDefault();
-		
-		window.parent.hello(input.value);
-		//window.parent.postMessage(input.value, 'http://127.0.0.1');
-	});
+	// add your code here..
 	
 	</script>
 </body>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 8: Post Message</title>
+	<title>HTML5 - Example 7: Web Worker</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,40 +31,46 @@
     </div>
     
 	<div class="container">
+		<h3>Web Worker</h3>
 		<div class="row">
-			<div class="col-md-6">	
-				<h3>This is parent page</h3>
+			<div class="col-md-4">
 				<form role="form">
-					<input type="text" id="input" /><button type="submit" class="btn btn-primary" id="btn">Submit</button>
+					<input type="number" id="input1" min="0" max="20" /> Billions loop
+					<output id="output1"></output>
+					<br/>
+					
+					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
 				</form>
-				<output id="output"></output>
+				<output id="output1"></output>
 			</div>
-			<iframe src="http://localhost/examples/8_postmessage_target.html" class="col-md-6"></iframe>
+			<div class="col-md-4">
+				<figure class="thumbnail">
+					<img src="../images/loader.gif" />
+				</figure>
+			</div>
 		</div>
 	</div>
 	
 	<script>
 	
-	var input = document.getElementById('input');
-	var btn = document.getElementById('btn');
-	var output = document.getElementById('output');
+	var input1 = document.getElementById('input1');
+	var output1 = document.getElementById('output1');
 	
-	btn.addEventListener('click', function(e) {
-		e.preventDefault();
+	var worker = new Worker('8_fibonacci_sample.js');
+	
+	worker.addEventListener('message', function(e) {
+		var output1 = document.getElementById('output1');
+		output1.innerHTML = e.data;
+	});
 		
-		window.frames[0].hello(input.value);
-		//window.frames[0].postMessage(input.value, 'http://localhost');
+	input1.addEventListener('change', function(e) {
+		var totalLoop = this.valueAsNumber * 1000000000;
+		
+		output1.innerHTML = ''; // reset output text;
+		worker.postMessage(totalLoop);
 	});
 	
-	function hello(message) {
-		output.innerHTML = message;
-	}
 	
-	/*
-	window.addEventListener('message', function(e) {
-		hello(e.data);
-	});
-	*/
 	</script>
 </body>
 </html>

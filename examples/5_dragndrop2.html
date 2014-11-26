@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 2.4: Form Validation API</title>
+	<title>HTML5 - Example 5: Drag &amp; Drop</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,38 +31,28 @@
     </div>
     
 	<div class="container">
-	
-		<form id="form">
-			<input type="text" id="input1" name="input1" placeholder="required input" required />
-			<input type="text" id="input2" name="input2" placeholder="normal input" />
-			<input type="text" id="input3" name="input3" placeholder="disabled" disabled />
-			<input type="text" id="input4" name="input4" placeholder="readonly" readonly />
-			<button type="submit">Submit</button>
-		</form>
-		
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h3 class="panel-title">Drop here</h3></div>
+			<div class="panel-body" style="height: 120px;" id="drop-target">
+			
+			</div>
+		</div>
 	</div>
 
-	<footer></footer>
-	<script>
-	
-		var form = document.getElementById('form');
-		var input1 = document.getElementById('input1');
-		var input2 = document.getElementById('input2');
-		
-		function validateInputMatch() {
-			
-			// add validation logic here
+<script>
+	var target = document.getElementById('drop-target');
 
-		}
+	target.addEventListener('dragover', function(e) {
+		e.preventDefault();
+	});
 		
-		input1.addEventListener('change', function(e) {
-			validateInputMatch();
-		}, false);
+	target.addEventListener('drop', function(e) {
+		e.preventDefault();
+		console.log(e.dataTransfer);
 		
-		input2.addEventListener('change', function(e) {
-			validateInputMatch();
-		}, false);
 		
-	</script>
+	});
+	
+</script>
 </body>
 </html>

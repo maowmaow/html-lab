@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 2.4: Form Validation API</title>
+	<title>HTML5 - Example 8: Post Message</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,38 +31,35 @@
     </div>
     
 	<div class="container">
-	
-		<form id="form">
-			<input type="text" id="input1" name="input1" placeholder="required input" required />
-			<input type="text" id="input2" name="input2" placeholder="normal input" />
-			<input type="text" id="input3" name="input3" placeholder="disabled" disabled />
-			<input type="text" id="input4" name="input4" placeholder="readonly" readonly />
-			<button type="submit">Submit</button>
-		</form>
-		
+		<div class="row">
+			<div class="col-md-4">	
+				<h3>This is parent page</h3>
+				<form role="form">
+					<div class="input-group">
+						<input type="text" id="input" class="form-control" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-primary" id="btn">Submit</button>
+						</span>
+					</div>
+				</form>
+				<output id="output"></output>
+			</div>
+			<iframe src="http://localhost/examples/7_postmessage_target.html" class="col-md-4 col-md-offset-1"></iframe>
+		</div>
 	</div>
-
-	<footer></footer>
+	
 	<script>
 	
-		var form = document.getElementById('form');
-		var input1 = document.getElementById('input1');
-		var input2 = document.getElementById('input2');
+	var input = document.getElementById('input');
+	var btn = document.getElementById('btn');
+	var output = document.getElementById('output');
+	
+	btn.addEventListener('click', function(e) {
+		window.frames[0].hello(input.value);
 		
-		function validateInputMatch() {
-			
-			// add validation logic here
-
-		}
-		
-		input1.addEventListener('change', function(e) {
-			validateInputMatch();
-		}, false);
-		
-		input2.addEventListener('change', function(e) {
-			validateInputMatch();
-		}, false);
-		
+		//window.frames[0].postMessage(input.value, 'http://localhost');
+	});
+	
 	</script>
 </body>
 </html>

@@ -36,16 +36,6 @@ footer {
 	font-family: monospace;
 }
 
-.drop-container {
-	border: 2px solid #999;
-	border-radius: 4px;
-	width: 310px;
-	height: 310px;
-	float: left;
-	margin: 10px;
-	text-align: center;
-}
-
 .box__form {
 	border: 1px solid #999;
 	border-radius: 4px;

@@ -38,8 +38,39 @@
 	
 <script>
 
+var canvas = document.getElementById('x');
+var ctx = canvas.getContext('2d');
 
+ctx.fillStyle = "#5cb85c";
+ctx.fillRect(10,10,200,100);
 
+ctx.moveTo(10,10);
+ctx.lineTo(210,110);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(190,250,50,0,2*Math.PI);
+ctx.fillStyle = "#d9534f";
+ctx.fill();
+
+ctx.font = "30px Arial";
+ctx.strokeText("Hello World",10,160);
+
+var img = new Image();
+img.src = 'http://images.clipartpanda.com/cat-clipart-RTG6Arqbc.png';
+img.onload = function() {
+	ctx.drawImage(img, 250, 10);	
+};
+
+ctx.beginPath();
+    ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+    ctx.moveTo(110,75);
+    ctx.arc(75,75,35,0,Math.PI,false);   // Mouth (clockwise)
+    ctx.moveTo(65,65);
+    ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
+    ctx.moveTo(95,65);
+    ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
+    ctx.stroke();
 </script>
 </body>
 </html>

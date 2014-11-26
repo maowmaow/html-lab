@@ -13,5 +13,8 @@ function getFibonacci(n) {
 	return c;
 }
 
-// add your code here...
-
+self.addEventListener('message', function(e) {
+	console.log('finding fibonacci for ' + e.data);
+	var result = getFibonacci(e.data);
+	self.postMessage(result);
+});

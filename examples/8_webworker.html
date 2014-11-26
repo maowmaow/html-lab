@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 2.4: Form Validation API</title>
+	<title>HTML5 - Example 7: Web Worker</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,38 +31,58 @@
     </div>
     
 	<div class="container">
-	
-		<form id="form">
-			<input type="text" id="input1" name="input1" placeholder="required input" required />
-			<input type="text" id="input2" name="input2" placeholder="normal input" />
-			<input type="text" id="input3" name="input3" placeholder="disabled" disabled />
-			<input type="text" id="input4" name="input4" placeholder="readonly" readonly />
-			<button type="submit">Submit</button>
-		</form>
-		
+		<h3>Web Worker</h3>
+		<div class="row">
+			<div class="col-md-4">
+				<form role="form">
+					<input type="number" id="input1" min="0" max="20" /> Billions loop
+					<output id="output1"></output>
+					<br/>
+					
+					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
+				</form>
+				<output id="output1"></output>
+			</div>
+			<div class="col-md-4">
+				<figure class="thumbnail">
+					<img src="../images/loader.gif" />
+				</figure>
+			</div>
+		</div>
 	</div>
-
-	<footer></footer>
+	
 	<script>
 	
-		var form = document.getElementById('form');
-		var input1 = document.getElementById('input1');
-		var input2 = document.getElementById('input2');
+	var input1 = document.getElementById('input1');
+	var output1 = document.getElementById('output1');
+	
+	function getFibonacci(n) {
+		var a = 0;
+		var b = 1;
+		var c = 0;
 		
-		function validateInputMatch() {
-			
-			// add validation logic here
-
-		}
+		if (n == 0) return 0;
+		for (var i=0; i<n; i++) {
+			c = a + b;
+			a = b;
+			b = c;
+		} 
+		return c;
+	}
+	
+	// add your code here...   8_fibonacci.js
+	
+	input1.addEventListener('change', function(e) {
+		var totalLoop = this.valueAsNumber * 1000000000;
 		
-		input1.addEventListener('change', function(e) {
-			validateInputMatch();
-		}, false);
+		output1.innerHTML = ''; // reset output text;
 		
-		input2.addEventListener('change', function(e) {
-			validateInputMatch();
-		}, false);
+		output1.innerHTML = getFibonacci(totalLoop);
 		
+		// add your code here...
+	});
+	
+	
 	</script>
 </body>
 </html>
