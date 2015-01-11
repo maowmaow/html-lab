@@ -52,16 +52,15 @@
 	startBtn.addEventListener('click', function(e) {
 		if (source) return;
 		
-		source = new EventSource("9_ss.php");
+		source = new EventSource("/events");
 		source.onmessage = function(e) {
 			var li = document.createElement('li');
 			li.innerHTML = 'message: ' + e.data;
 			output.appendChild(li);
 		};	
-		source.addEventListener('news_alert', function(e) {
-			var obj = JSON.parse(e.data);
+		source.addEventListener('news', function(e) {
 			var li = document.createElement('li');
-			li.innerHTML = 'news_alert: ' + obj.time + ", " + obj.headline;
+			li.innerHTML = 'news: ' + e.data;
 			output.appendChild(li);
 		});
 	});

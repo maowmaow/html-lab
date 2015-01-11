@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 - Example 8: Web Worker</title>
+	<link rel="shortcut icon" href="../favicon.png" />
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">HTML5 Course</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+            	<a href="../index.html">Home</a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+	<div class="container">
+		<h3>Web Worker</h3>
+		<div class="row">
+			<div class="col-md-4">
+				<form role="form">
+					<input type="number" id="input1" min="0" max="20" /> Billions loop
+					<output id="output1"></output>
+					<br/>
+					
+					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
+				</form>
+				<output id="output1"></output>
+			</div>
+			<div class="col-md-4">
+				<figure class="thumbnail">
+					<img src="../images/loader.gif" />
+				</figure>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+	
+	var input1 = document.getElementById('input1');
+	var output1 = document.getElementById('output1');
+	
+	function getFibonacci(n) {
+		var a = 0;
+		var b = 1;
+		var c = 0;
+		
+		if (n == 0) return 0;
+		for (var i=0; i<n; i++) {
+			c = a + b;
+			a = b;
+			b = c;
+		} 
+		return c;
+	}
+	
+	// add your code here...   8_fibonacci.js
+	
+	input1.addEventListener('change', function(e) {
+		var totalLoop = this.valueAsNumber * 1000000000;
+		
+		output1.innerHTML = ''; // reset output text;
+		
+		output1.innerHTML = getFibonacci(totalLoop);
+		
+		// add your code here...
+	});
+	
+	
+	</script>
+</body>
+</html>

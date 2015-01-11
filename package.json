@@ -1,0 +1,11 @@
+{
+  "name": "NodeLab",
+  "description": "Materials for a HTML5 course",
+  "author": "MM",
+  "dependencies": {
+    "express": "~4.10",
+    "nunjucks": "^1.1.0",
+    "ws": "^0.6.3"
+  },
+  "engine": "node >= 0.10.33"
+}

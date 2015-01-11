@@ -2,10 +2,25 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 7: Web Worker</title>
+	<title>HTML5 - Example 9.2: Web Socket</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
+	
+	<style>
+	#panel {
+		border: 1px solid #ccc;
+		border-radius: 4px 4px 0 0;
+		height: 300px;
+		width: 500px;
+		overflow: auto;
+	}
+	#panel p {
+		margin: 0;
+		padding: 2px 10px;
+	}
+	
+	</style>
 </head>
 <body>
 
@@ -31,46 +46,37 @@
     </div>
     
 	<div class="container">
-		<h3>Web Worker</h3>
-		<div class="row">
-			<div class="col-md-4">
-				<form role="form">
-					<input type="number" id="input1" min="0" max="20" /> Billions loop
-					<output id="output1"></output>
-					<br/>
-					
-					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
-				</form>
-				<output id="output1"></output>
-			</div>
-			<div class="col-md-4">
-				<figure class="thumbnail">
-					<img src="../images/loader.gif" />
-				</figure>
-			</div>
-		</div>
+		<h3>Web Socket</h3>
+		<div id="panel"></div>
+		<input type="text" id="message" /><button onclick="send()">Send</button>
 	</div>
-	
+
 	<script>
-	
-	var input1 = document.getElementById('input1');
-	var output1 = document.getElementById('output1');
-	
-	var worker = new Worker('8_fibonacci_sample.js');
-	
-	worker.addEventListener('message', function(e) {
-		var output1 = document.getElementById('output1');
-		output1.innerHTML = e.data;
-	});
+		var panel = document.getElementById('panel');
+		var text = document.getElementById('message');
+
+		function addMessage(msg) {
+			var p = document.createElement('p');
+			p.innerHTML = msg;
+			panel.appendChild(p);
+		}
 		
-	input1.addEventListener('change', function(e) {
-		var totalLoop = this.valueAsNumber * 1000000000;
+		var socket = new WebSocket('ws://localhost', ['chat-protocol']);
+		socket.addEventListener('message', function(e) {
+			addMessage(e.data);	
+			panel.scrollTop = panel.scrollHeight;
+		}, true);
 		
-		output1.innerHTML = ''; // reset output text;
-		worker.postMessage(totalLoop);
-	});
-	
-	
+		function send() {
+			socket.send(text.value);
+			text.value = '';
+		}
+		
+		text.addEventListener('keypress', function(e) {
+			if (e.keyCode == 13) {
+				send();
+			}
+		});
 	</script>
 </body>
 </html>

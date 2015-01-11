@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HTML5 - Example 7: Web Worker</title>
+	<title>HTML5 - Example 7: Post Message</title>
 	<link rel="shortcut icon" href="../favicon.png" />
 	<link rel="stylesheet" href="../bootstrap.min.css" />
 	<link rel="stylesheet" href="../style.css" />
@@ -31,57 +31,34 @@
     </div>
     
 	<div class="container">
-		<h3>Web Worker</h3>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4">	
+				<h3>This is parent page</h3>
 				<form role="form">
-					<input type="number" id="input1" min="0" max="20" /> Billions loop
-					<output id="output1"></output>
-					<br/>
-					
-					<button type="button" class="btn btn-primary" id="btn1">Submit</button>
+					<div class="input-group">
+						<input type="text" id="input" class="form-control" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-primary" id="btn">Submit</button>
+						</span>
+					</div>
 				</form>
-				<output id="output1"></output>
+				<output id="output"></output>
 			</div>
-			<div class="col-md-4">
-				<figure class="thumbnail">
-					<img src="../images/loader.gif" />
-				</figure>
-			</div>
+			<iframe src="http://localhost/examples/7_postmessage_target.html" class="col-md-4 col-md-offset-1"></iframe>
 		</div>
 	</div>
 	
 	<script>
 	
-	var input1 = document.getElementById('input1');
-	var output1 = document.getElementById('output1');
+	var input = document.getElementById('input');
+	var btn = document.getElementById('btn');
+	var output = document.getElementById('output');
 	
-	function getFibonacci(n) {
-		var a = 0;
-		var b = 1;
-		var c = 0;
+	btn.addEventListener('click', function(e) {
+		window.frames[0].hello(input.value);
 		
-		if (n == 0) return 0;
-		for (var i=0; i<n; i++) {
-			c = a + b;
-			a = b;
-			b = c;
-		} 
-		return c;
-	}
-	
-	// add your code here...   8_fibonacci.js
-	
-	input1.addEventListener('change', function(e) {
-		var totalLoop = this.valueAsNumber * 1000000000;
-		
-		output1.innerHTML = ''; // reset output text;
-		
-		output1.innerHTML = getFibonacci(totalLoop);
-		
-		// add your code here...
+		//window.frames[0].postMessage(input.value, 'http://localhost');
 	});
-	
 	
 	</script>
 </body>
